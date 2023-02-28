@@ -7,7 +7,7 @@
     - **1 pt**: Code provided and includes at least one correct tidyverse function but is not complete AND/OR (if text answer) response present but limited in depth of answer
     - **2 pt**: Correct provide provided AND/OR insightful text answer provided that correct describes patterns or addresses question.
     
-- 10 pts per question for Question 11 (total of 10 pts)
+- 10 pts for Question 11 (total of 10 pts)
     - **0pts**: no code or answer provided
     - **2 pt**: Code provided and includes at least one correct tidyverse function but is not complete AND/OR (if text answer) response present but limited in depth of answer
     - **4 pt**: Code, text, and plots include functions that were introduced in the module but the scientific analysis is not valid.
