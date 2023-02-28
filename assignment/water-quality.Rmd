@@ -3,9 +3,6 @@ title: 'Water Quality'
 author: 'Quinn Thomas'
 output:
   github_document: default
-editor_options: 
-  markdown: 
-    wrap: 80
 ---
 
 ```{r message= FALSE}
@@ -13,7 +10,7 @@ library(tidyverse)
 library(lubridate)
 ```
 
-# API
+# Using Application Programming Interfaces (API)
 
 Many sources of data have an application programming interface (API) that is a set of clearly defined methods of communication. The USGS has a API that we will use.
 
@@ -24,12 +21,11 @@ Copy and paste the following command into a web browser.
 You will see that it returns a data table and, based the USGS website, is tab-delimitated. This call to the API specifically asks for a subset of data from the USGS water quality dataset. To see what subset it is asking for we need to break down the API into its components.
 
 -   the base URL: <https://nwis.waterdata.usgs.gov/usa/nwis/uv/>?   
--   the variable of interest: cb_00010=on (00010 is water temperature and cb\_
-    is require before all variables)
--   the format of the table: format=rdb (this means tab delimited table, rather
+-   the variable of interest: `cb_00010=on` (00010 is water temperature and `cb` is require before all variables)
+-   the format of the table: `format=rdb` (this means tab delimited table, rather
     than, say, a json format)
--   the site id: site_no=05464420
--   the period of time: period=&begin_date=2014-04-01&end_date=2014-09-01 (the
+-   the site id: `site_no=05464420`
+-   the period of time: `period=&begin_date=2014-04-01&end_date=2014-09-01` (the
     period of the begin and end date)
 
 Each of these components is combined together with an "&" to create the full URL.
@@ -307,17 +303,9 @@ Plot how the number of days per year where the average nitrate concentration is 
 
 # Geneate report for an agency
 
-An Iowa agency wants a report on how water quality is changing through time across
-the state. Generate a plot that provides number of days per year where the
-average nitrate concentration for each site is higher than the EPA limit over
-the years in the data. You have all the tools to need to generate the report
-except for the list of USGS sites in Iowa. You can find the list of all sites in a
-json file in the `data/site_list.json` with the site codes as a column.
+An Iowa agency wants a report on how water quality is changing through time across the state. Generate a plot that provides number of days per year where the average nitrate concentration for each site is higher than the EPA limit over the years in the data. You have all the tools to need to generate the report except for the list of USGS sites in Iowa. You can find the list of all sites in a json file in the `data/site_list.json` with the site codes as a column.
 
-A JSON file is a common format used when requesting data from database hosted remotely. JSON stands for JavaScript Object Notation. You can learn more about JSON
-[here](https://r4ds.hadley.nz/rectangling.html#json). You will need to install
-the `jsonlite` package and use the `read_json()` function to read in the
-metadata (you can call this `df_site_list`).  Be sure to use the the argument `simplifyVector = TRUE` so that you covert the JSON to a dataframe.
+A JSON file is a common format used when requesting data from database hosted remotely. JSON stands for JavaScript Object Notation. You can learn more about JSON [here](https://r4ds.hadley.nz/rectangling.html#json). You will need to install the `jsonlite` package and use the `read_json()` function to read in the metadata (you can call this `df_site_list`).  Be sure to use the the argument `simplifyVector = TRUE` so that you covert the JSON to a dataframe.
 
 **Question 11:**
 
