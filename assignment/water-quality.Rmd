@@ -34,7 +34,7 @@ Our goal is to leverage the API to explore spatial and temporal patterns in wate
 
 # Pasting strings
 
-We can build this url from variables by pasting strings and variables together into one long string.  For example, we can create the following variables
+We can build this URL from variables by pasting strings and variables together into one long string.  For example, we can create the following variables
 
 ```{r}
 variable <- "cb_00010"
@@ -43,7 +43,7 @@ begin_date <- "2014-04-01"
 end_date <- "2014-09-01"
 ```
 
-and use them to construct the url using the `paste0()` function.  The paste0 function combines strings and variables together.  For example,
+and use them to construct the URL using the `paste0()` function.  The `paste0()` function combines strings and variables together.  For example,
 
 ```{r}
 paste0(variable,"=on")
@@ -52,7 +52,9 @@ paste0(variable,"=on")
 ```{r}
 url <- paste0("https://nwis.waterdata.usgs.gov/usa/nwis/uv/?",
               variable,"=on&format=rdb&site_no=",
-              site_no,"&period=&begin_date=", begin_date, "&end_date=",end_date)
+              site_no,"&period=&begin_date=", 
+              begin_date, "&end_date=",
+              end_date)
 ```
 
 # Reading and cleaning data
@@ -105,7 +107,6 @@ head(stream_data)
 Now fix the class issue with the `datetime` and `temperature` columns. What is the format of the`datatime` column? Since it has the year, month, day, hour, and minute we will use the `ymd_hm()` function (this is similar to the `ymd()` that we used in the data carpentry module)
 
 ```{r}
-tz <- stream_data$tz_cd[1]
 stream_data <- stream_data %>% 
     mutate(datetime = ymd_hm(datetime))
 head(stream_data)
@@ -129,7 +130,7 @@ stream_data
 
 **Question 1:**
 
-Download data  Then Combine all cleaning steps above into a single set of piped commands that creates a data table named `stream_data`
+Combine all cleaning steps above into a single set of piped commands that creates a data table named `stream_data`.  Don't include `read_delim()` in your set of piped commands - instead use the df that is output by read_delime() (e.g., `stream_data` as the starting dataset for the pipe)
 
 **Answer 1:**
 
@@ -141,7 +142,7 @@ Download data  Then Combine all cleaning steps above into a single set of piped 
 
 Often you want repeat a task, like downloading from an API, using slightly different configurations. Rather than copying and pasting the code for each configuration.
 
-The first step is to create the task that you will be repeatly doing using a function. Functions can take input arguments and generate output. For example, here is a function that adds two numbers together.
+The first step is to create the task that you will be repeatedly doing using a function. Functions can take input arguments and generate output. For example, here is a function that adds two numbers together.
 
 ```{r}
 add2numbers <- function(a, b){
@@ -185,7 +186,8 @@ get_USGS_temp_data <- function(site_no){
     #THIS IS NEEDED BECAUSE SOME SITES MAY RETURN EMPTY TABLES
     stream_data <- NULL
   }else{
-    stream_data <- ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
+    stream_data <- stream_data |> 
+      ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
   }
   return(stream_data)
   
@@ -206,15 +208,14 @@ numbers
 
 Does this match your expected output?
 
-The class of the output are lists. That is because the `map` function automatically combines the output from the different function calls into a list. There are other functions in the `map_` family that combines the output in different ways. For example, the `map_dbl` function returns a vector of numeric values and is more approproiate for this simple example.
+The class of the output are lists. That is because the `map` function automatically combines the output from the different function calls into a list. There are other functions in the `map_` family that combines the output in different ways. For example, the `map_dbl` function returns a vector of numeric values and is more appropriate for this simple example.
 
 ```{r}
 numbers2add <- c(1,2,3,4)
 numbers <- map_dbl(numbers2add, add2numbers, b = 1)
-numbers
 ```
 
-There are multipe functions in the `map_` family that combine the output in different ways.
+There are multiple functions in the `map_` family that combine the output in different ways.
 
 **Question 3**
 
@@ -243,7 +244,7 @@ temperature_data <- map_dfr(sites, get_USGS_temp_data)
 Now we can plot the data that was returned by the call to `map_dfr`. Does it have data from two sites as expected?
 
 ```{r}
-ggplot(temperature_data, aes(x = datetime, y = tempeature, color = site_no)) +
+ggplot(temperature_data, aes(x = datetime, y = temperature, color = site_no)) +
   geom_point()
 ```
 
@@ -286,7 +287,7 @@ Modify the functions that we created for downloading and cleaning temperature da
 
 **Question 6:**
 
-Download and clean the data from `site_no = 05464420` for the period between 2011-01-01 and 2023-01-01.
+Download and clean the data from `site_no = 05464420` for the period between `2011-01-01` and `2023-01-01`.
 
 **Answer 6:**
 
@@ -314,7 +315,7 @@ Does the location exceed the EPA limit?
 
 **Question 9:**
 
-Calculate the number of days per year where the daily mean nitrate is higher than the EPA limit.  You will need to figure out how to answer this question using skills that you already have (i.e., `group_by`, `summarize`, `year`).  One skill that you may not have used yet is the [`ifelse()` function](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/ifelse).  You can use `ifelse` in a mutate to determine if the daily mean nitrate is above the threshold: `mutate(above = ifelse(nitrate > epa_limit, 1, 0))`.  
+Calculate the number of days per year where the daily mean nitrate is higher than the EPA limit.  You will need to figure out how to answer this question using skills that you already have (i.e., `group_by`, `summarize`, `year`) and some creativity.
 
 **Answer 9:**
 
