@@ -321,7 +321,7 @@ Calculate the number of days per year where the daily mean nitrate is higher tha
 
 **Question 10:**
 
-Plot how the number of days per year where the average nitrate concentration is higher than the EPA limit over the years in the data (x = year, y = number of days per year). How is it changing over time?
+Plot the number of days per year where the average nitrate concentration is higher than the EPA limit (x = year, y = number of days per year). How is it changing over time?
 
 **Answer 10:**
 
@@ -332,7 +332,9 @@ Plot how the number of days per year where the average nitrate concentration is 
 
 # Geneate report for an agency
 
-An Iowa agency wants a report on how water quality is changing through time across the state. Generate a plot that provides number of days per year where the average nitrate concentration for each site is higher than the EPA limit over the years in the data. You have all the tools to need to generate the report except for the list of USGS sites in Iowa. You can find the list of all sites in a json file in the `data/site_list.json` with the site codes as a column.
+An Iowa agency wants a report on how water quality is changing through time across the state. Generate a plot that provides the number of days per year where the average nitrate concentration for each site is higher than the EPA limit in the data (same plot as question 10 but with more sites). Use the same date range as above (`2011-01-01` to `2023-01-01`).
+
+You have all the tools to need to generate the report except for the list of USGS sites in Iowa. You can find the list of all sites in a json file in the `data/site_list.json` with the site code as a column. 
 
 A JSON file is a common format used when requesting data from database hosted remotely. JSON stands for JavaScript Object Notation. You can learn more about JSON [here](https://r4ds.hadley.nz/rectangling.html#json). You will need to install the `jsonlite` package and use the `read_json()` function to read in the metadata (you can call this `df_site_list`).  Be sure to use the the argument `simplifyVector = TRUE` so that you covert the JSON to a dataframe.
 
