@@ -340,13 +340,11 @@ A JSON file is a common format used when requesting data from database hosted re
 
 **Question 11:**
 
-Your answers to this Question is going to be a mix of code chunks and text. It
-should include
+Your answers to this Question is going to be a mix of code chunks and text. It should include
 
--   Read in and prepare data for analysis.
--   Aggregate (summarize) data to the appropriate time resolution.
--   Plot data that includes all sites (e.g. sites should be separate lines on the
-    plot)
+-   Read in and prepare USGS data for analysis (remember that you already have created the function to download and clean the data. You have also learned about the `map` function to iterate over sites)
+-   Calculate the number of days per year that each site exceeds the EPA limit (you have already done this for a single site)
+-   Plot data that includes all sites (e.g. sites should be separate lines on a single plot)
 -   Describe the patterns and conclusions from the data.
 
 **Answer 11:**
