@@ -12,7 +12,7 @@ editor: visual
 -   How do you imagine a substance dissolved in a liquid?
 -   How does dissolution occur?
 
-## Water - The Universal Solvent
+## Water - The Universal Solvent {.smaller}
 
 ::: columns
 ::: {.column width="83%"}
@@ -29,7 +29,7 @@ editor: visual
 :::
 :::
 
-## Water - The Universal Solvent
+## Water - The Universal Solvent {.smaller}
 
 ::: columns
 ::: {.column width="80%"}
@@ -48,7 +48,7 @@ editor: visual
 :::
 :::
 
-## Concentration
+## Concentration {.smaller}
 
 -   The mass of a substance (solute) dissolved in either a volume of water (solvent), or dissolved in a mass of water.
 -   Common concentration units by volume:
@@ -125,7 +125,7 @@ editor: visual
 
 Examples: - In rivers and lakes, growth of cyanobacteria blooms - In drinking water resources, blue baby syndrome and cyanotoxins - In estuaries, hypoxic zones
 
-## Summary of Impacts of Nutrients
+## Summary of Impacts of Nutrients {.smaller}
 
 -   Blooms
 
@@ -143,7 +143,7 @@ Examples: - In rivers and lakes, growth of cyanobacteria blooms - In drinking wa
 
 -   Hypoxia - Low oxygen leads to fish kills
 
-## Sources of Nutrients: Fertilizer
+## Sources of Nutrients: Fertilizer {.smaller}
 
 -   Any material of natural or synthetic origin applied to soils or to plant tissues (leafs) to supply one or more plant nutrients essential to the growth of plants.
 -   More fertilizer addition = Higher crop yield = More money
@@ -169,7 +169,7 @@ Examples: - In rivers and lakes, growth of cyanobacteria blooms - In drinking wa
 -   How would you manage these impacts?
 -   What challenges can you imagine?
 
-## The Clean Water Act
+## The Clean Water Act {.smaller}
 
 The U.S. Clean Water Act (CWA) is a series of federal legislative acts that form the foundation for protection of U.S. water resources:
 
@@ -177,12 +177,18 @@ The U.S. Clean Water Act (CWA) is a series of federal legislative acts that form
 
 The goal of the Clean Water Act (CWA) is "to restore and maintain the chemical, physical, and biological integrity of the Nation's waters"
 
-## State 303(d) Lists
+## State 303(d) Lists {.smaller}
 
 -   Under section 303(d) of the CWA, states, territories, and authorized tribes, collectively referred to in the act as "states," are required to develop lists of impaired and threatened waters (stream/river segments, lakes)
 -   These are waters for which technology-based regulations and other required controls are not stringent enough to meet the water quality standards set by states.
 -   The law requires that states establish priority rankings for waters on 303(d) lists
 -   All states to submit 303(d) lists for EPA approval every two years on even-numbered years.
+
+## Data Science Skills
+
+- Application Programming Inferences (API)
+- Writing functions
+- Iteration (loops)
 
 ## References
 
