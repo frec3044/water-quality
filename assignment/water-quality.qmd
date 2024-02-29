@@ -87,23 +87,23 @@ Now use the comment option in the `read_delim`. You will need to add the
 comment symbol below.
 
 ```{r}
-stream_data <- read_delim(url, 
-                          delim = "\t", 
-                          comment = )
+df <- read_delim(url, 
+                 delim = "\t", 
+                 comment = "#")
 
 ```
 
 Do the headers look good now?
 
 ```{r}
-head(stream_data)
+head(df)
 ```
 
 Which column is the temperature observation? Let's give them better
 names. The number below in `rename` is the column number (column 5)
 
 ```{r}
-stream_data <- stream_data %>% 
+stream_data <- df %>% 
     rename(temperature = 5)
 head(stream_data)
 ```
@@ -236,7 +236,7 @@ get_USGS_temp_data <- function(site_no){
   
   url <- ADD_YOUR_FUNCTION_FROM_QUESTION_2_THAT_CREATES_THE_URL
   
-  stream_data <- read_delim(file = url, 
+  df <- read_delim(file = url, 
                             delim = "\t", 
                             comment = "#")
   
@@ -244,7 +244,7 @@ get_USGS_temp_data <- function(site_no){
     #THIS IS NEEDED BECAUSE SOME SITES MAY RETURN EMPTY TABLES
     stream_data <- NULL
   }else{
-    stream_data <- stream_data |> 
+    stream_data <- df |> 
       ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
   }
   return(stream_data)
