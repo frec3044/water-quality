@@ -288,6 +288,7 @@ example.
 ```{r}
 numbers2add <- c(1, 2, 3, 4)
 numbers <- map_dbl(numbers2add, add2numbers, b = 1)
+numbers
 ```
 
 There are multiple functions in the `map_` family that combine the
