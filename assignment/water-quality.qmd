@@ -162,8 +162,8 @@ head(stream_data)
 
 Combine all cleaning steps above into a single set of piped commands
 that creates a data frame named `stream_data`. Don't include
-`read_delim()` in your set of piped commands - instead use the df that
-is output by read_delim() as the starting point.
+`read_delim()` in your set of piped commands - instead use the `df` that
+is output by `read_delim()` as the starting point.
 
 **Answer 1:**
 
@@ -237,8 +237,8 @@ get_USGS_temp_data <- function(site_no){
   url <- ADD_YOUR_FUNCTION_FROM_QUESTION_2_THAT_CREATES_THE_URL
   
   df <- read_delim(file = url, 
-                            delim = "\t", 
-                            comment = "#")
+                   delim = "\t", 
+                   comment = "#")
   
   if(ncol(stream_data) < 5){ 
     #THIS IS NEEDED BECAUSE SOME SITES MAY RETURN EMPTY TABLES
