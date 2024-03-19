@@ -240,7 +240,7 @@ get_USGS_temp_data <- function(site_no){
                    delim = "\t", 
                    comment = "#")
   
-  if(ncol(stream_data) < 5){ 
+  if(ncol(df) < 5){ 
     #THIS IS NEEDED BECAUSE SOME SITES MAY RETURN EMPTY TABLES
     stream_data <- NULL
   }else{
