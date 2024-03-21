@@ -145,6 +145,13 @@ stream_data <- stream_data |>
 stream_data
 ```
 
+We only need the site_no, datetime, and temperature columns so `select` them
+
+```{r}
+stream_data <- stream_data |> 
+  select(site_no, datetime, temperature)
+
+```
 Finally, remove the temperature missing values using `na.omit()`
 
 ```{r}
