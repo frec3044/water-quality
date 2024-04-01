@@ -482,12 +482,12 @@ text. It should include
 -   Read in and prepare USGS data for analysis (remember that you
     already have created the function to download and clean the data.
     You have also learned about the `map` function to iterate over
-    sites)
+    sites).  Use functions introduced in this module when appropriate. 
 -   Calculate the number of days per year that each site exceeds the EPA
     limit (you have already done this for a single site)
--   Plot data that includes all sites (e.g. sites should be separate
+-   Plot data that includes all sites (e.g., sites should be separate
     lines on a single plot)
--   Describe the patterns and conclusions from the data.
+-   Describe the patterns and draw conclusions from the data.
 
 **Answer 13:**
 
