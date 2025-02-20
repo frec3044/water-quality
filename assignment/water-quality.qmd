@@ -62,6 +62,7 @@ To read in data from a single request, we can directly read in the data
 
 ```{r}
 df <- read_delim(url, delim = "\t")
+
 head(df) 
 ```
 
@@ -70,10 +71,7 @@ Look at the imported data. Did it work? Is there a symbol that designates a comm
 Now use the comment option in the `read_delim`. You will need to add the comment symbol below.
 
 ```{r}
-df <- read_delim(url, 
-                 delim = "\t", 
-                 comment = "#")
-
+df <- read_delim(url,  delim = "\t", comment = "#")
 ```
 
 Do the headers look good now?
@@ -87,6 +85,7 @@ Which column is the temperature observation? Let's give them better names. The n
 ```{r}
 stream_data <- df |>  
     rename(temperature = 5) 
+
 head(stream_data)
 ```
 
@@ -108,6 +107,7 @@ Now fix the class issue with the `datetime` and `temperature` columns. What is t
 ```{r}
 stream_data <- stream_data |>  
     mutate(datetime = ymd_hm(datetime))
+
 head(stream_data)
 ```
 
@@ -116,6 +116,7 @@ Now lets fix the `temperature` column by converting from character to numeric us
 ```{r}
 stream_data <- stream_data |> 
   mutate(temperature = as.numeric(temperature))
+
 stream_data
 ```
 
@@ -194,9 +195,7 @@ get_USGS_temp_data <- function(site_no){
   
   url <- ADD_YOUR_FUNCTION_FROM_QUESTION_2_THAT_CREATES_THE_URL
   
-  df <- read_delim(file = url, 
-                   delim = "\t", 
-                   comment = "#")
+  df <- read_delim(file = url, delim = "\t", comment = "#")
   
   if(ncol(df) < 5){ 
     #THIS IS NEEDED BECAUSE SOME SITES MAY RETURN EMPTY TABLES
@@ -361,7 +360,7 @@ Plot the number of days per year where the average nitrate concentration is high
 
 # Geneate report for an agency
 
-An Iowa agency wants a report on how water quality is changing through time across the state. Generate a plot that provides the number of days per year where the average nitrate concentration for each site is higher than the EPA limit in the data (same plot as question 10 but with more sites). Use the same date range as above (`2011-01-01` to `2024-01-01`).
+An Iowa agency wants a report on how water quality is changing through time across the state. Generate a plot that provides the number of days per year where the average nitrate concentration for each site is higher than the EPA limit in the data (same plot as question 10 in part 1 but with more sites). Use the same date range as in part 1. (`2011-01-01` to `2024-01-01`).
 
 You have all the tools to need to generate the report except for the list of USGS sites in Iowa. You can find the list of all sites in a json file in the `data/site_list.json` with the site code as a column.
 
@@ -371,7 +370,7 @@ A JSON file is a common format used when requesting data from databash hosted re
 
 Your answers to this Question is going to be a mix of code chunks, plots, and text. It should include
 
--   Read in and prepare USGS data for analysis (remember that you already have created the function to download and clean the data. You have also learned about the `map` function to iterate over sites).  Use functions introduced in this module when appropriate. 
+-   Read in and prepare USGS data for analysis. Use functions introduced in this module when appropriate. Remember that you already have created the function to download and clean the data so just copy and paste the function in this assignment. You have also learned about the `map` function to iterate over sites. 
 -   Calculate the number of days per year that each site exceeds the EPA limit (you have already done this for a single site)
 -   Plot data that includes all sites (e.g., sites should be separate lines on a single plot)
 -   Describe the patterns and draw conclusions from the data.

@@ -14,7 +14,7 @@ editor: visual
 
 ## Water - The Universal Solvent {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="83%"}
 -   Water is called a "universal solvent"
     -   H2O is a "V-shaped," polar molecule
@@ -25,13 +25,13 @@ editor: visual
 :::
 
 ::: {.column width="17%"}
-![](img/water-molecule.png)
+![](img/water-molecule.png){fig-alt="image water module"}
 :::
-:::
+:::::
 
 ## Water - The Universal Solvent {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="80%"}
 -   Water can dissolve other polar molecules and gases
     -   Solids: Salts such as NaCl
@@ -44,9 +44,9 @@ editor: visual
 :::
 
 ::: {.column width="20%"}
-![](img/water-dissolved.png)
+![](img/water-dissolved.png){fig-alt="image modules solved in water"}
 :::
-:::
+:::::
 
 ## Concentration {.smaller}
 
@@ -58,7 +58,7 @@ editor: visual
 
 ## Common Nitrogen Species in Solution
 
-![](img/n-species.png)
+![](img/n-species.png){fig-alt="table of different nitrogen modules"}
 
 ## Ways to Report Nitrate Concentrations (units) {.smaller}
 
@@ -94,7 +94,7 @@ editor: visual
     -   Secondary macronutrients include calcium (Ca), magnesium (Mg) and sulfur (S)
     -   Micronutrients include copper (Cu), iron (Fe), manganese (Mn), molybdenum (Mo), zinc (Zn) and nickel (Ni), and sometimes boron (B), silicon (Si), cobalt (Co).
 
-## Nutrients vs. Toxins  {.smaller}
+## Nutrients vs. Toxins {.smaller}
 
 -   Micronutrient: a small amount is needed for biological function
     -   Plants: Copper
@@ -107,7 +107,7 @@ editor: visual
     -   Mercury, arsenic, lead, thallium
 -   For most, **concentration dictates toxicity**
 
-## Nitrogen: A Nutrient or Toxin?  {.smaller}
+## Nitrogen: A Nutrient or Toxin? {.smaller}
 
 -   Nitrogen is used by organisms to produce amino acids, proteins, and nucleic acids.
 -   80% of the atmosphere is nitrogen gas (N2)
@@ -158,11 +158,11 @@ Examples: - In rivers and lakes, growth of cyanobacteria blooms - In drinking wa
 
 ## Sources of Nutrients
 
-![](img/sources1.png)
+![](img/sources1.png){fig-alt="graph of nitrogen sources into waterways"}
 
 ## Sources of Nutrients
 
-![](img/sources2.png)
+![](img/sources2.png){fig-alt="image modules solved in Cheasapake Bay"}
 
 ## Management
 
@@ -186,9 +186,9 @@ The goal of the Clean Water Act (CWA) is "to restore and maintain the chemical, 
 
 ## Data Science Skills
 
-- Application Programming Inferences (API)
-- Writing functions
-- Iteration (loops)
+-   Application Programming Inferences (API)
+-   Writing functions
+-   Iteration (loops)
 
 ## References
 
