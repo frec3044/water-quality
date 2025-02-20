@@ -217,7 +217,9 @@ Back to our `add2numbers()` example. The following code has a vector of numbers 
 
 ```{r}
 numbers2add <- c(1,2,3,4)
+
 numbers <- map(numbers2add, add2numbers, b = 1)
+
 numbers
 ```
 
@@ -225,7 +227,9 @@ The class of the output are lists. That is because the `map` function automatica
 
 ```{r}
 numbers2add <- c(1, 2, 3, 4)
+
 numbers <- map_dbl(numbers2add, add2numbers, b = 1)
+
 numbers
 ```
 
@@ -281,7 +285,7 @@ Explore federal regulatory guidelines. The US Environmental Protection Agency li
 
 **Question 6:**
 
--   What is the Maximum Contaminant Level (MCL) for nitrate (reported as
+-   What is the Maximum Contaminant Level (MCL) for nitrate? (reported as
     nitrate -nitrogen) in mg/L.
 -   What are the potential health impacts of consuming water with
     concentrations above this limit?
