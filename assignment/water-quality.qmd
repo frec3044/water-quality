@@ -13,27 +13,27 @@ library(lubridate)
 
 # Using Application Programming Interfaces (API)
 
-Many sources of data have an application programming interface (API) that is a set of clearly defined methods of communication. The USGS has a API that we will use.
+Many data sources have an application programming interface (API), a clearly defined communication method with the data on the remote server. The USGS has an API that we will use.
 
 Copy and paste the following command into a web browser.
 
 <https://nwis.waterdata.usgs.gov/usa/nwis/uv/?cb_00010=on&format=rdb&site_no=05464420&period=&begin_date=2014-04-01&end_date=2014-09-01>
 
-You will see that it returns a data table and, based the USGS website, is tab-delimitated. This call to the API specifically asks for a subset of data from the USGS water quality dataset. To see what subset it is asking for we need to break down the API into its components.
+You will see that it returns a data table that is tab-delimited, according to the USGS website. This call to the API specifically asks for a subset of data from the USGS water quality dataset. To see what subset it is asking for, we need to break down the API into its components.
 
 -   the base URL: <https://nwis.waterdata.usgs.gov/usa/nwis/uv/?>\
--   the variable of interest: `cb_00010=on` (00010 is water temperature and `cb` is require before all variables)
--   the format of the table: `format=rdb` (this means tab delimited table, rather than, say, a json format)
+-   the variable of interest: `cb_00010=on` (00010 is water temperature, and `cb` is required before all variables)
+-   the format of the table: `format=rdb` (this means tab-delimited table, rather than a JSON format)
 -   the site id: `site_no=05464420`
 -   the period of time: `period=&begin_date=2014-04-01&end_date=2014-09-01` (the period of the begin and end date)
 
-Each of these components is combined together using "&" to separate components and create the full URL.
+Each of these components is combined using "&" to separate components and create the full URL.
 
 Our goal is to leverage the API to explore spatial and temporal patterns in water quality.
 
 # Pasting strings
 
-We can build this URL from variables by pasting strings and variables together into one long string. For example, we can create the following variables:
+We can build this URL from variables by pasting strings and variables into one long string. For example, we can create the following variables:
 
 ```{r}
 variable <- "cb_00010"
@@ -42,7 +42,7 @@ begin_date <- "2014-04-01"
 end_date <- "2014-09-01"
 ```
 
-and use them to construct the URL using the `paste0()` function. The `paste0()` function combines strings and variables together. For example,
+And use them to construct the URL using the `paste0()` function. The `paste0()` function combines strings and variables. For example,
 
 ```{r}
 paste0(variable,"=on")
@@ -58,7 +58,7 @@ url <- paste0("https://nwis.waterdata.usgs.gov/usa/nwis/uv/?",
 
 # Reading and cleaning data
 
-To read in data from a single request, we can directly read in the data
+To read data from a single request, we can directly read the data.
 
 ```{r}
 df <- read_delim(url, delim = "\t")
@@ -66,15 +66,15 @@ df <- read_delim(url, delim = "\t")
 head(df) 
 ```
 
-Look at the imported data. Did it work? Is there a symbol that designates a comment in the file?
+Look at the imported data. Does it work? Is there a symbol in the file designating a comment?
 
-Now use the comment option in the `read_delim`. You will need to add the comment symbol below.
+Now use the comment option in the `read_delim`. Please add the comment symbol below.
 
 ```{r}
 df <- read_delim(url,  delim = "\t", comment = "#")
 ```
 
-Do the headers look good now?
+Do you know if the headers look good now?
 
 ```{r}
 head(df)
@@ -91,7 +91,7 @@ head(stream_data)
 
 What is the class of the datetime and nitrate columns? Is this what you expected?
 
-Why might the class be wrong? Look at the top rows of the dataframe and in the raw data. Why is the first row different than all the other rows?
+Why might the class be wrong? Look at the top rows of the dataframe and the raw data. Why is the first row different than all the other rows?
 
 Now, we need to remove the first row. `slice` is a function that selects particular rows based on row number. The `-1` value removes the first row.
 
@@ -111,7 +111,7 @@ stream_data <- stream_data |>
 head(stream_data)
 ```
 
-Now lets fix the `temperature` column by converting from character to numeric using `as.numeric()`
+Now let's fix the `temperature` column by converting it from character to numeric using `as.numeric()`
 
 ```{r}
 stream_data <- stream_data |> 
@@ -120,7 +120,7 @@ stream_data <- stream_data |>
 stream_data
 ```
 
-We only need the site_no, datetime, and temperature columns so `select` them
+We only need the site_no, datetime, and temperature columns so `select` them.
 
 ```{r}
 stream_data <- stream_data |> 
@@ -135,7 +135,7 @@ stream_data <- stream_data |>
   na.omit()
 ```
 
-The cleaned up data frame could look like this:
+The cleaned-up data frame could look like this:
 
 ```{r}
 head(stream_data)
@@ -155,7 +155,7 @@ stream_data <- df |>
 
 # Functions
 
-Often you want repeat a task, like downloading from an API, using a set of slightly different configurations. Rather than copying and pasting the code for each configuration.
+Often, you want to repeat a task, like downloading from an API, using a set of slightly different configurations rather than copying and pasting the code for each configuration.
 
 The first step is to create the task that you will be repeatedly doing using a function. Functions can take input arguments and generate output. For example, here is a function that adds two numbers together. You can learn more about functions [here](https://r4ds.hadley.nz/functions.html#vector-functions)
 
@@ -167,18 +167,18 @@ add2numbers <- function(a, b){
 add2numbers
 ```
 
-The function can be called `add2numbers(a = 1 , b = 2)` or just `add2numbers(1 , 2)`. `a` and `b` are the input arguments and it returns a single value that as to be assigned to a new object
+The function can be called `add2numbers(a = 1 , b = 2)` or just `add2numbers(1 , 2)`. `a` and `b` are the input arguments, and it returns a single value that is to be assigned to a new object.
 
 ```{r}
 new_number <- add2numbers(2, 3)
 new_number
 ```
 
-Functions like this are very powerful for breaking up code into clearly separated, well-described (particularly when using descriptive verbs in the function name - like we know what the `add2numbers` does from the function name) reusable parts. The power of using multiple functions is that you can update a function in one place, and all the places that it is called will also be updated. This helps reduce errors in your code where you changed something in one place but not another.
+Functions like this are very powerful for breaking up code into clearly separated, well-described (particularly when using descriptive verbs in the function name - like we know what the `add2numbers` does from the function name) reusable parts. The power of using multiple functions is to update a function in one place, and all the places it is called will also be updated. This helps reduce errors in your code where you changed something in one place but not another.
 
 **Question 2:**
 
-Based on the information provided above, create a function that takes arguments `variable`, `site_no`, `begin_date`, and `end_date` and returns the full API URL. Remember to give the function a useful name that is a verb (e.g., represents the action that the function performs).
+Based on the information provided above, create a function that takes arguments `variable`, `site_no`, `begin_date`, and `end_date` and returns the full API URL. Remember to give the function a helpful name that is a verb (e.g., represents the action that the function performs).
 
 **Answer 2:**
 
@@ -211,9 +211,9 @@ get_USGS_temp_data <- function(site_no){
 
 # Iteration
 
-Now that we have a function we can reuse, there are powerful tools in R that make it easy to apply the function repeatably using different values for the arguments. Here we will use the `map_` family of functions within the `purrr` package (contained in the Tidyverse). 
+Now that we have a function we can reuse, powerful tools in R make it easy to apply the function repeatably using different values for the arguments. Here, we will use the `map_` family of functions within the `purrr` package (contained in the Tidyverse). 
 
-Back to our `add2numbers()` example. The following code has a vector of numbers `numbers2add` that we want to add to the number 1 (`b = 1`). The map function applies the `add2numbers()` function to each number in `numbers2add` using the other argument a not changing `b = 1`. Importantly, the first argument of the map function is the vector of things that you want to iterate over and it has to be the first argument in the function that you are using. In particular, `numbers2add` are the values that we want to use for `a` in the `add2numbers(a, b)`. The second argument is the function name. Any arguments after function name are other arguments that function uses.
+Back to our `add2numbers()` example. The following code has a vector of numbers `numbers2add` that we want to add to the number 1 (`b = 1`). The map function applies the `add2numbers()` function to each number in `numbers2add` using the other argument a not changing `b = 1`. Importantly, the first argument of the map function is the vector of things you want to iterate over and it has to be the first argument in the function you are using. In particular, `numbers2add` are the values we want to use for `a` in the `add2numbers(a, b)`. The second argument is the function name. Any arguments after the function name are other arguments that the function uses.
 
 ```{r}
 numbers2add <- c(1,2,3,4)
@@ -223,7 +223,7 @@ numbers <- map(numbers2add, add2numbers, b = 1)
 numbers
 ```
 
-The class of the output are lists. That is because the `map` function automatically combines the output from the different function calls into a list. There are other functions in the `map_` family that combines the output in different ways. For example, the `map_dbl` function returns a vector of numeric values and is more appropriate for this simple example.
+The class of the output is a list. That is because the `map` function automatically combines the output from the different function calls into a list. There are other functions in the `map_` family that combines the output in different ways. For example, the `map_dbl` function returns a vector of numeric values and is more appropriate for this simple example.
 
 ```{r}
 numbers2add <- c(1, 2, 3, 4)
@@ -237,7 +237,7 @@ There are multiple functions in the `map_` family that combine the output in dif
 
 **Question 4**
 
-Run the command `?map` to pull up the help information for the map function. For each function below describe what the map function will return
+Run the command `?map` to pull up the help information for the map function. For each function below, describe what the map function will return
 
 **Answer 4**:
 
@@ -250,7 +250,7 @@ Run the command `?map` to pull up the help information for the map function. For
 -   `map_dfc()`:
 -   `walk()`:
 
-The `map_dfr()` is particularly powerful for working with data frames because it appends by rows each data frame that is generated by each call to the function. We use it to apply our function to download and clean the USGS data over multiple sites. This example uses two site codes and passes them to the function `get_USGS_temp_data()` that you created above.
+The `map_dfr()` is particularly powerful for working with data frames because it appends by rows each data frame generated by each call to the function. We use it to apply our function to download and clean the USGS data over multiple sites. This example uses two site codes and passes them to the function `get_USGS_temp_data()` you created above.
 
 ```{r}
 sites <- c("05412500", "05464420")
@@ -258,7 +258,7 @@ sites <- c("05412500", "05464420")
 temperature_data <- map_dfr(sites, get_USGS_temp_data)
 ```
 
-Now we can plot the data that was returned by the call to `map_dfr`.
+Now we can plot the data returned by the call to `map_dfr`.
 
 **Question 5** 
 
@@ -266,7 +266,7 @@ Be sure that the following plot has data from two sites.
 
 **Answer 5**
 
-The code for answer 5 is provided.  If there two lines are shown, then your answer is correct.  If two lines are not shown, then you will need to modify the code above so that the plot produces two lines.
+The code for answer 5 is provided.  If there two lines are shown, then your answer is correct.  If two lines are not shown, then you must modify the code above so that the plot produces two lines.
 
 ```{r}
 ggplot(temperature_data, aes(x = datetime, y = temperature, color = site_no)) +
@@ -275,7 +275,7 @@ ggplot(temperature_data, aes(x = datetime, y = temperature, color = site_no)) +
 
 # Explore impaired streams and nitrate concentrations at a site
 
-For the second part of this module, we will be further exploring impaired water bodies near us and federal guidelines for safety using publicly available EPA water quality data.
+For the second part of this module, we will explore impaired water bodies near us and federal safety guidelines using publicly available EPA water quality data.
 
 ## Background
 
@@ -285,10 +285,8 @@ Explore federal regulatory guidelines. The US Environmental Protection Agency li
 
 **Question 6:**
 
--   What is the Maximum Contaminant Level (MCL) for nitrate? (reported as
-    nitrate -nitrogen) in mg/L.
--   What are the potential health impacts of consuming water with
-    concentrations above this limit?
+-   What is the Maximum Contaminant Level (MCL) for nitrate? (reported as nitrate-nitrogen) in mg/L.
+-   What are the potential health impacts of consuming water with concentrations above this limit?
 -   What are the common sources of nitrate in water?
 
 **Answer 6:**
@@ -296,13 +294,13 @@ Explore federal regulatory guidelines. The US Environmental Protection Agency li
 
 ## Analysis
 
-During this portion of the module, you will download, clean, and generate plots that will allow you to further analyze the data, answering questions as you go.
+During this portion of the module, you will download, clean, and generate plots that allow you to analyze the data further, answering questions as you go.
 
-Watershed managers need to know how often a risk presents itself in a watershed in order for action to be taken. For financially strapped government's, priority is given to problems that have the highest probability of occurring and which are associated with the most severe impacts. "Blue-baby syndrome" is a condition that leads to infant mortality. It is caused by the ingestion of nitrate in drinking water which subsequently bonds to oxygen sites on hemoglobin in the blood of the infant. This impairs the circulation of oxygen in the bloodstream and causes the baby to turn blue. Obviously, society would like to avoid this outcome.
+Watershed managers need to know how often a risk presents itself in a watershed for action to be taken. For financially strapped governments, priority is given to problems that have the highest probability of occurring and which are associated with the most severe impacts. "Blue-baby syndrome" is a condition that leads to infant mortality. It is caused by the ingestion of nitrate in drinking water which subsequently bonds to oxygen sites on hemoglobin in the blood of the infant. This impairs the circulation of oxygen in the bloodstream and causes the baby to turn blue. Society would like to avoid this outcome.
 
 **Question 7:**
 
-Modify the functions that we created for downloading and cleaning temperature data to be able to download and clean the nitrate data for the period between `2011-01-01` and `2024-01-01`. The variable code for nitrate is `cb_99133`.
+Modify the functions that we created for downloading and cleaning temperature data to download and clean the nitrate data for the period between `2011-01-01` and `2024-01-01`. The variable code for nitrate is `cb_99133`.
 
 **Answer 7:**
 
@@ -343,7 +341,7 @@ Does the focal site exceed the EPA limit?
 
 **Question 11:**
 
-Calculate the number of days per year where the daily mean nitrate is higher than the EPA limit for the focal site. You will need to figure out how to answer this question using skills that you already have (these may include, but are not limited to: `group_by()`, `summarize()`, `year()`) and some creativity.  Be sure your answer can be repeated easily for a different site.
+Calculate the number of days per year where the daily mean nitrate is higher than the EPA limit for the focal site. You will need to figure out how to answer this question using skills that you already have (these may include, but are not limited to: `group_by()`, `summarize()`, `year()`), and some creativity.  Be sure your answer can be repeated easily for a different site.
 
 **Answer 11:**
 
@@ -364,15 +362,15 @@ Plot the number of days per year where the average nitrate concentration is high
 
 # Geneate report for an agency
 
-An Iowa agency wants a report on how water quality is changing through time across the state. Generate a plot that provides the number of days per year where the average nitrate concentration for each site is higher than the EPA limit in the data (same plot as question 10 in part 1 but with more sites). Use the same date range as in part 1. (`2011-01-01` to `2024-01-01`).
+An Iowa agency wants a report on how water quality is changing over time across the state. Generate a plot that provides the number of days per year where the average nitrate concentration for each site is higher than the EPA limit in the data (same plot as question 10 in part 1 but with more sites). Use the same date range as in part 1. (`2011-01-01` to `2024-01-01`).
 
-You have all the tools to need to generate the report except for the list of USGS sites in Iowa. You can find the list of all sites in a json file in the `data/site_list.json` with the site code as a column.
+You have all the tools to generate the report except for the list of USGS sites in Iowa. The list of all sites is in a JSON file called `data/site_list.json`, with the site code as a column.
 
-A JSON file is a common format used when requesting data from databash hosted remotely. JSON stands for JavaScript Object Notation. You can learn more about JSON [here](https://r4ds.hadley.nz/rectangling.html#json).  You will need to install the `jsonlite` package and use the `read_json()`  function to read in the metadata (you can call this `df_site_list`). Be sure to  use the the argument `simplifyVector = TRUE` so that you covert the JSON to a dataframe.
+A JSON file is a common format used when requesting data from a database hosted remotely. JSON stands for JavaScript Object Notation. You can learn more about JSON [here](https://r4ds.hadley.nz/rectangling.html#json).  You will need to install the `jsonlite` package and use the `read_json()`  function to read in the metadata (you can call this `df_site_list`). Be sure to  use the argument `simplifyVector = TRUE` so that you convert the JSON to a data frame.
 
 **Question 13:**
 
-Your answers to this Question is going to be a mix of code chunks, plots, and text. It should include
+Your answer to this Question is going to be a mix of code chunks, plots, and text. It should include
 
 -   Read in and prepare USGS data for analysis. Use functions introduced in this module when appropriate. Remember that you already have created the function to download and clean the data so just copy and paste the function in this assignment. You have also learned about the `map` function to iterate over sites. 
 -   Calculate the number of days per year that each site exceeds the EPA limit (you have already done this for a single site)
@@ -385,9 +383,9 @@ Your answers to this Question is going to be a mix of code chunks, plots, and te
 
 # Rendering and committing
 
-Remember to Render your document as a `html` and comment+push to GitHub your code, and rendered html that was created when you knitted the document. Your GitHub repository should have multiple commits with informative commit messages.
+Remember to Render your document as HTML and comment+push to GitHub your code and rendered HTML that was created when you knitted the document. Your GitHub repository should have multiple commits with informative commit messages.
 
 # Attribution
 
-Include citation of any AI-generated assistance or discussion with classmates (per policy in syllabus). Proper documentation of AI-generated assistance includes the prompt, the source (e.g., ChatGPT), and the significant parts of the response.  Proper documentation of discussion with classmates include listing their names and the components discussed.  
+Include citations of any AI-generated assistance or discussion with classmates (per policy in the syllabus). Proper documentation of AI-generated assistance includes the prompt, the source (e.g., ChatGPT), and the significant parts of the response.  Proper documentation of discussion with classmates includes listing their names and the components discussed.  
 
