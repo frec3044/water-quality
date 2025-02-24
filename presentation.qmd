@@ -62,24 +62,24 @@ editor: visual
 
 ## Ways to Report Nitrate Concentrations (units) {.smaller}
 
--   **Nitrate (ppm):** This mass expression states the parts of nitrate present in one million parts of solution: 2 mg in 1 kg of water would be 2 ppm Nitrate.
+-   **Nitrate (ppm):** This mass expression states the parts of nitrate present in one million parts of the solution: 2 mg in 1 kg of water would be 2 ppm Nitrate.
 
 -   **Nitrate (mg/L):** This value represents the mass of one nitrogen atom PLUS the mass of 3 oxygen atoms (which make up the nitrate molecule) found in one liter of water
 
--   **Nitrate-Nitrogen (NO3-N) (mg/L)**: This term represents the mass of ONLY nitrogen in the nitrate molecules found in one liter of water. Because there is three times more oxygen than nitrogen in nitrate, concentrations of "nitrate" are larger than concentrations of "nitrate-nitrogen" for the same sample.
+-   **Nitrate-Nitrogen (NO3-N) (mg/L)**: This term represents the mass of ONLY nitrogen in the nitrate molecules found in one liter of water. Because there is three times more oxygen than nitrogen in nitrate, concentrations of "nitrate" are larger than "nitrate-nitrogen" for the same sample.
 
     -   The U.S. EPA regulations are based on this value.
 
 -   **Nitrate+Nitrite Nitrogen (NO3+NO2-N) (mg/L):** This is the mass of nitrogen from both nitrate and nitrite. Nitrite is typically very small in surface water as it rapidly oxidizes to nitrate.
 
-    -   This value is reported by the USGS.
+    -   USGS reports this value.
 
 ## Nutrients vs Toxins
 
 -   What are nutrients?
 -   Where do you find nutrients?
 -   Are nutrients always "good"?
--   Can you every have too much?
+-   Can you ever have too much?
 -   What are toxins?
 
 ## Nutrients {.smaller}
@@ -88,7 +88,7 @@ editor: visual
 -   Because water is a universal solvent, all life on Earth utilizes liquid water to obtain and circulate nutrients
     -   Young men are 64% water by weight
     -   Young women are 53% water by weight
-    -   The search for extra terrestrial life is focused on finding planets that have liquid water
+    -   The search for extraterrestrial life is focused on finding planets that have liquid water
 -   For plants:
     -   Primary macronutrients include carbon (C), nitrogen (N), phosphorous (P), and potassium (K).
     -   Secondary macronutrients include calcium (Ca), magnesium (Mg) and sulfur (S)
@@ -109,7 +109,7 @@ editor: visual
 
 ## Nitrogen: A Nutrient or Toxin? {.smaller}
 
--   Nitrogen is used by organisms to produce amino acids, proteins, and nucleic acids.
+-   Organisms use nitrogen to produce amino acids, proteins, and nucleic acids.
 -   80% of the atmosphere is nitrogen gas (N2)
 -   Most plants can only take up nitrogen in two forms from soil water, making nitrogen a limiting nutrient in plant growth:
     -   Ammonium (NH4+ )
@@ -145,16 +145,16 @@ Examples: - In rivers and lakes, growth of cyanobacteria blooms - In drinking wa
 
 ## Sources of Nutrients: Fertilizer {.smaller}
 
--   Any material of natural or synthetic origin applied to soils or to plant tissues (leafs) to supply one or more plant nutrients essential to the growth of plants.
+-   Any material of natural or synthetic origin applied to soils or to plant tissues (leaves) to supply one or more plant nutrients essential to the growth of plants.
 -   More fertilizer addition = Higher crop yield = More money
 -   No incentive to conserve
 -   Runoff (Non-point Source) from agricultural fields, lawns, golf courses
 
 ## Sources of Nutrients: Waste Water Effluent
 
--   Contains excess C, N and P not used by animals
--   Direct input (Point Source) from waste water treatment plants and/or septic systems
--   Runoff (Non-point Source) from high-density animal feedlots and mega farms (cows, chickens, other)
+-   Contains excess C, N, and P not used by animals
+-   Direct input (Point Source) from wastewater treatment plants and/or septic systems
+-   Runoff (Non-point Source) from high-density animal feedlots and mega-farms (cows, chickens, other)
 
 ## Sources of Nutrients
 
@@ -175,14 +175,14 @@ The U.S. Clean Water Act (CWA) is a series of federal legislative acts that form
 
 -   Water Quality Act of 1965, Federal Water Pollution Control Act of 1972, Clean Water Act of 1977, and -Water Quality Act of 1987.
 
-The goal of the Clean Water Act (CWA) is "to restore and maintain the chemical, physical, and biological integrity of the Nation's waters"
+The goal of the Clean Water Act (CWA) is "to restore and maintain the chemical, physical, and biological integrity of the Nation's waters."
 
 ## State 303(d) Lists {.smaller}
 
 -   Under section 303(d) of the CWA, states, territories, and authorized tribes, collectively referred to in the act as "states," are required to develop lists of impaired and threatened waters (stream/river segments, lakes)
 -   These are waters for which technology-based regulations and other required controls are not stringent enough to meet the water quality standards set by states.
 -   The law requires that states establish priority rankings for waters on 303(d) lists
--   All states to submit 303(d) lists for EPA approval every two years on even-numbered years.
+-   All states submit 303(d) lists for EPA approval every two years on even-numbered years.
 
 ## Data Science Skills
 
