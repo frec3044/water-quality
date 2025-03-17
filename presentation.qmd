@@ -123,7 +123,13 @@ editor: visual
 
 "Nutrient pollution is one of America's most widespread, costly and challenging environmental problems, and is caused by excess nitrogen and phosphorus in the air and water" (US EPA)
 
-Examples: - In rivers and lakes, growth of cyanobacteria blooms - In drinking water resources, blue baby syndrome and cyanotoxins - In estuaries, hypoxic zones
+Examples:
+
+-   In rivers and lakes, growth of cyanobacteria blooms
+
+-   In drinking water resources, blue baby syndrome and cyanotoxins
+
+-   In estuaries, hypoxic zones
 
 ## Summary of Impacts of Nutrients {.smaller}
 
