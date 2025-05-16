@@ -1,14 +1,15 @@
-This repository is a template for every student's lake ice phenology module. This is the third module of FREC 3044 Environmental Data Science, intended to use tidyverse skills to perform basic modeling in R.
+This repository is a template for the water quality module. 
 
-## assignment
+## Assignment
 
-All work for this assignment is in the `assignment` directory.  Code is contained in the `lake-ice.Rmd` notebook, and final rendered output files (`lake-ice.md` and associated files) are in the `assignment` directory as well. The general rubric you will be graded on is found in the `rubric.md` file. 
+- `assignment/water-quality.qmd` 
 
-## Special files
+## Data
 
-Additionally this repository, and all student repositories, includes most of the special files found here:
+-  Focal data is downloaded from the USGS as part of assignment
+- `assignment/data/site_list.json` is the list of USGS site numbers and their states
 
-### Common files
+## Common files
 
 - `README.md` this file, a general overview of the repository in markdown format.  
 - `lesson.md` a description of the assignment.

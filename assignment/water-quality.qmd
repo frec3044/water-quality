@@ -200,8 +200,13 @@ get_USGS_temp_data <- function(site_no){
   if(ncol(df) < 5){ 
     #THIS IS NEEDED BECAUSE SOME SITES MAY RETURN EMPTY TABLES
     stream_data <- NULL
-  }else{
-    stream_data <- df |> 
+  }else if(ncol(df) == 6){
+    stream_date <- df |> 
+      rename(temperature = 5) |>
+      ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
+  } else {
+    stream_date <- df |> 
+      rename(temperature = 7) |>
       ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
   }
   return(stream_data)
@@ -270,7 +275,8 @@ The code for answer 5 is provided.  If there two lines are shown, then your answ
 
 ```{r}
 ggplot(temperature_data, aes(x = datetime, y = temperature, color = site_no)) +
-  geom_point()
+  geom_point() +
+  labs(x = "Time", y = "Water temperature (°C)")
 ```
 
 # Explore impaired streams and nitrate concentrations at a site
@@ -300,7 +306,7 @@ Watershed managers need to know how often a risk presents itself in a watershed 
 
 **Question 7:**
 
-Modify the functions that we created for downloading and cleaning temperature data to download and clean the nitrate data for the period between `2011-01-01` and `2024-01-01`. The variable code for nitrate is `cb_99133`.
+Modify the functions that we created for downloading and cleaning temperature data to download and clean the nitrate data for the period between `2011-01-01` and the current date. The variable code for nitrate is `cb_99133`.
 
 **Answer 7:**
 
@@ -333,7 +339,7 @@ Create a plot with datetime on the x-axis and nitrate on the y-axis (this is a t
 
 **Question 10:**
 
-Does the focal site exceed the EPA limit?
+Has the focal site exceeded the EPA limit?
 
 **Answer 10:**
 
