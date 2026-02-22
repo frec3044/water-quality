@@ -6,11 +6,19 @@ format:
 editor: visual
 ---
 
-## Chemistry Review Questions
+## What is Water Quality?
 
--   What is a solution?
--   How do you imagine a substance dissolved in a liquid?
--   How does dissolution occur?
+The chemical, physical, and biological characteristics of water, determining its suitability for specific uses like drinking, recreation, or ecosystem health.
+
+U.S. EPA
+
+## Components of Water Quality
+
+-   Physical: **temperature**, turbidity (cloudiness), color, and taste.
+-   Chemical: Measure pH (acidity), dissolved oxygen, [nutrients (nitrogen/phosphorus)]{.underline}, and contaminants like heavy metals or pesticides.
+-   Biological: **microorganisms**, bacteria, and pathogens.
+
+U.S. EPA
 
 ## Water - The Universal Solvent {.smaller}
 
@@ -58,7 +66,13 @@ editor: visual
 
 ## Common Nitrogen Species in Solution
 
-![](img/n-species.png){fig-alt="table of different nitrogen modules"}
+-   Ammonia: NH3
+
+-   Ammonium: NH4+
+
+-   **Nitrite: NO2-**
+
+-   **Nitrate: NO3-**
 
 ## Ways to Report Nitrate Concentrations (units) {.smaller}
 
@@ -169,11 +183,6 @@ Examples:
 ## Sources of Nutrients
 
 ![](img/sources2.png){fig-alt="image modules solved in Cheasapake Bay"}
-
-## Management
-
--   How would you manage these impacts?
--   What challenges can you imagine?
 
 ## The Clean Water Act {.smaller}
 
