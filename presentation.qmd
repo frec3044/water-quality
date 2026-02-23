@@ -116,7 +116,7 @@ U.S. EPA
 -   Toxin: a chemical, physical, or biological agent that causes disease or some alteration of the normal structure and function of an organism.
     -   Acute toxicity: Immediate impact
     -   Chronic toxicity: Impact after a long period of exposure
--   When does a nutrient become a toxin???
+-   When does a nutrient become a toxin?
 -   A few elements are toxic at all concentrations
     -   Mercury, arsenic, lead, thallium
 -   For most, **concentration dictates toxicity**
