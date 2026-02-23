@@ -122,4 +122,4 @@ GitHub
 
 -   Partial Credit: Assignment found on the course GitHub, but only a single commit was provided (no evidence that the student saved and committed progress) or missing HTML on GitHub.
 
--   No Credit: Assignment not found on the course GitHub organization, or no commits on GitHub found.
+-   No Credit: Assignment in the course GitHub organization, but no commits by the student are on GitHub.

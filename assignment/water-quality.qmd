@@ -88,7 +88,7 @@ Which column is the temperature observation? Let's give them better names. The n
 
 ```{r}
 stream_data <- df |>  
-    rename(temperature = 5) 
+    rename(temperature = 7) 
 
 head(stream_data)
 ```
@@ -204,11 +204,13 @@ get_USGS_temp_data <- function(site_no){
   if(ncol(df) < 5){ 
     #THIS IS NEEDED BECAUSE SOME SITES MAY RETURN EMPTY TABLES
     stream_data <- NULL
-  }else if(ncol(df) == 6){
+  }else if(ncol(df) == 6){ 
+    #THIS IS NEEDED BECAUSE SOME SITES ONLY HAVE ONE TEMPERATURE MEASUREMENT
     stream_date <- df |> 
       rename(temperature = 5) |>
       ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
   } else {
+    #BUT OTHERS HAVE TWO TEMPERATURE MEASUREMENTS (TWO DIFFERENT SENSORS)
     stream_date <- df |> 
       rename(temperature = 7) |>
       ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
@@ -310,7 +312,7 @@ Watershed managers need to know how often a risk occurs in a watershed so they c
 
 **Question 7:**
 
-Modify the functions we created for downloading and cleaning temperature data to download and clean nitrate data for the period from `2011-01-01` to the current date. The variable code for nitrate is `cb_99133`.
+Modify the functions we created for downloading and cleaning temperature data to download and clean nitrate data.  Download data for the period from `2011-01-01` to the current date. The variable code for nitrate is `cb_99133`.
 
 **Answer 7:**
 
@@ -321,7 +323,7 @@ Modify the functions we created for downloading and cleaning temperature data to
 
 **Question 8:**
 
-Download and clean the data from `site_no = "05464420"` using your function from question 6 (this is our focal site).  Use the function `head()` to show your data.
+Download and clean the data from `site_no = "05464420"` using your function from question 7.  Use the function `head()` to show your data.
 
 **Answer 8:**
 
@@ -332,7 +334,7 @@ Download and clean the data from `site_no = "05464420"` using your function from
 
 **Question 9:**
 
-Create a plot with datetime on the x-axis and nitrate on the y-axis (this is a time-series plot of nitrate). Then use the `geom_hline()` function to add a horizontal line at the EPA concentration (the `epa_limit` variable that you defined above)
+Create a plot using the data from Question 8, with datetime on the x-axis and nitrate on the y-axis (this is a time-series plot of nitrate). Then use the `geom_hline()` function to add a horizontal line at the EPA concentration (the `epa_limit` variable that you defined above)
 
 **Answer 9:**
 
@@ -372,7 +374,7 @@ Plot the number of days per year where the average nitrate concentration is high
 
 # Geneate report for an agency
 
-An Iowa agency wants a report on how water quality is changing over time across the state. Generate a plot that provides the number of days per year where the average nitrate concentration for each site is higher than the EPA limit in the data (same plot as question 10 in part 1, but with more sites). Use the same date range as in part 1. (`2011-01-01` to `2024-01-01`).
+An Iowa agency wants a report on how water quality is changing over time across the state. Generate a plot that provides the number of days per year where the average nitrate concentration for each site is higher than the EPA limit in the data (same plot as question 11, but with more sites). Use the same date range (`2011-01-01` to `2026-01-01`).
 
 You have all the tools to generate the report except for the list of USGS sites in Iowa. The list of all sites is in a JSON file called `data/site_list.json`, with the site code as a column.
 
@@ -384,7 +386,7 @@ Your answer to this question will be a mix of code chunks, plots, and text. It s
 
 -   Read in and prepare USGS data for analysis. Use functions introduced in this module when appropriate. Remember that you have already created the function to download and clean the data, so just copy and paste the function into this assignment. You have also learned about the `map` function to iterate over sites. 
 -   Calculate the number of days per year that each site exceeds the EPA limit (you have already done this for a single site)
--   Plot data that includes all sites (e.g., sites should be separate lines on a single plot)
+-   Plot the exceedance data that includes all sites (e.g., sites should be separate lines on a single plot)
 -   Describe the patterns and draw conclusions from the data.
 
 **Answer 13:**
