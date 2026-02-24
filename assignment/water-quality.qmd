@@ -206,12 +206,12 @@ get_USGS_temp_data <- function(site_no){
     stream_data <- NULL
   }else if(ncol(df) == 6){ 
     #THIS IS NEEDED BECAUSE SOME SITES ONLY HAVE ONE TEMPERATURE MEASUREMENT
-    stream_date <- df |> 
+    stream_data <- df |> 
       rename(temperature = 5) |>
       ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
   } else {
     #BUT OTHERS HAVE TWO TEMPERATURE MEASUREMENTS (TWO DIFFERENT SENSORS)
-    stream_date <- df |> 
+    stream_data <- df |> 
       rename(temperature = 7) |>
       ADD_YOUR_CODE_FROM_QUESTION_1_THAT_CLEANS_THE_DATA
   }
